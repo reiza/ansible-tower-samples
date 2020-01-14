@@ -34,8 +34,6 @@
     - name: create ec2 vpc internet gateway
       # create an internet gateway for the vpc
       ec2_vpc_igw:
-        aws_access_key: "{{ aws_access_key }}"
-        aws_secret_key: "{{ aws_secret_key }}"
         vpc_id: "{{ ec2_vpc_net_result.vpc.id }}"
         region: "{{ region }}"
         state: "{{ state }}"
@@ -45,8 +43,6 @@
     - name: create ec2 vpc subnet
       # create the subnet for the vpc with a cidr block
       ec2_vpc_subnet:
-        aws_access_key: "{{ aws_access_key }}"
-        aws_secret_key: "{{ aws_secret_key }}"
         vpc_id: "{{ ec2_vpc_net_result.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone }}" # az is the availability zone
@@ -60,8 +56,6 @@
     - name: create ec2 security group
       # create a security group for the vpc
       ec2_group:
-        aws_access_key: "{{ aws_access_key }}"
-        aws_secret_key: "{{ aws_secret_key }}"
         vpc_id: "{{ ec2_vpc_net_result.vpc.id }}"
         region: "{{ region }}"
         state: "{{ state }}"
@@ -79,8 +73,6 @@
     - name: create ec2 VPC Network access control list
       # create the access control list with ingress and egress ports
       ec2_vpc_nacl:
-        aws_access_key: "{{ aws_access_key }}"
-        aws_secret_key: "{{ aws_secret_key }}"
         vpc_id: "{{ ec2_vpc_net_result.vpc.id }}"
         region: "{{ region }}"
         state: "{{ state }}"
@@ -167,15 +159,12 @@
     - name: create ec2 VPC public subnet route table
       # create route table and connect subnet to routes
       ec2_vpc_route_table:
-        aws_access_key: "{{ aws_access_key }}"
-        aws_secret_key: "{{ aws_secret_key }}"
         vpc_id: "{{ ec2_vpc_net_result.vpc.id }}"
         region: "{{ region }}"
         state: "{{ state }}"
         tags:
           Name: "{{ route_table_name }}"
         subnets: ["{{ subnet_result.subnet.id }}"]
-
         # create routes
         routes:
           - dest: "{{ destinationCidrBlock }}"

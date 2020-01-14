@@ -1,0 +1,9 @@
+# Note: None of these examples set aws_access_key, aws_secret_key, or region.
+# It is assumed that their matching environment variables are set.
+
+# Basic creation example:
+    - ec2_vpc:
+        state: present
+        cidr_block: 10.252.0.0/16
+        resource_tags: { "Environment":"Anisible Sandbox" }
+        region: us-east-1

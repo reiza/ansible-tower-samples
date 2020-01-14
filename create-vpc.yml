@@ -11,7 +11,7 @@
     security_group_name: "{{ vpc_title }} Security Group"
     route_table_name: "{{ vpc_title }} route table"
     vpcCidrBlock: "10.252.0.0/16"
-    subNetCidrBlock: "10.0.1.0/24"
+    subNetCidrBlock: "10.252.70.0/24"
     port22CidrBlock: "0.0.0.0/0"
     destinationCidrBlock: "0.0.0.0/0"
     state: "present"
